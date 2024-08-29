@@ -80,3 +80,12 @@ func BalanceFor(transactions []Transaction, name string) float64 {
 	}
 	return Reduce(transactions, adjustBalance, 0.0)
 }
+
+func Find[A any](items []A, predicate func(A) bool) (value A, found bool) {
+	for _, v := range items {
+		if predicate(v) {
+			return v, true
+		}
+	}
+	return
+}
